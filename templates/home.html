@@ -5,7 +5,11 @@
 {% block content %}
     <h1>ホーム</h1>
     {% if user.is_authenticated %}
-        <p>ログイン中: {{ user.username }}</p>
+        <p>ログイン中: {{ user.name }}</p>
+        <p>- student_id: {{ user.student_id }}</p>
+        <p>- grade: {{ user.grade }}</p>
+        <p>- department: {{ user.department.all }}</p>
+        <p>- phone_number: {{ user.phone_number }}</p>
         <p><a href="{% url 'logout' %}">logout</a></p>
     {% else %}
         <p>ログインしていません.</p>
