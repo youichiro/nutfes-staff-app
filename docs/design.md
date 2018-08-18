@@ -28,7 +28,6 @@ app: account
 
 model: 
   User:
-    id: auto
     student_id: char
     name: char
     grade: choice
@@ -36,7 +35,6 @@ model:
     phone_number: char
     password: password
   Department:
-    id: auto
     name: char
 
 pages:
@@ -66,13 +64,11 @@ app: message
 
 models:
   Message:
-    id: auto
     user: User
     text: text
     importance: choice
     created_at: datetime
   Reply:
-    id: auto
     user: User
     message: Message
     text: text
