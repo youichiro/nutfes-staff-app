@@ -1,4 +1,4 @@
-# nutfes-app設計書
+# nutfes-staff-app 設計書
 
 ## 機能
 1. ログイン機能
