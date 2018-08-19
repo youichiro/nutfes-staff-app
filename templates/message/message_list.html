@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block title %}メッセージ一覧{% endblock %}
+
+{% block content %}
+    <h3>メッセージリスト</h3>
+    {% for message in message_list %}
+        <p>#{{ message.id }}</p>
+        <p>[{{ message.importance }}] {{ message.text|linebreaksbr }}</p>
+        <p>@{{ message.user.name }} {{ message.created_at|date:'h:m' }}</p>
+        <p><a href="{% url 'reply_form' message.id %}">返信する</a></p>
+        <hr>
+        <h4>返信</h4>
+        {% for reply in message.reply_set.all %}
+            <p>>> #{{ message.id }} </p>
+            <p>{{ reply.text|linebreaksbr }}</p>
+            <p>@{{ reply.user.name }} {{ reply.created_at|date:'h:m' }}</p>
+            <hr>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
