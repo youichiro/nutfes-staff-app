@@ -39,6 +39,7 @@ class UserCreationForm(forms.ModelForm):
     department = forms.ModelMultipleChoiceField(
         queryset=Department.objects.all(),
         widget=forms.CheckboxSelectMultiple,
+        required=True,
     )
 
     class Meta:
@@ -73,4 +74,5 @@ class UserCreationForm(forms.ModelForm):
         user.set_password(self.cleaned_data['password1'])
         if commit:
             user.save()
+            self.save_m2m()  # ManyToManyフィールドの保存
         return user
