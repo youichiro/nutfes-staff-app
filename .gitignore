@@ -3,3 +3,6 @@ __pycache__
 .idea
 .python-version
 config/database.py
+config/secret.json
+shift/scripts/*
+!__init__.py

@@ -79,3 +79,31 @@ pages:
   /view: メッセージ・返信閲覧画面
   /reply_form: 返信フォーム画面
 ```
+
+
+## シフト確認機能
+各局員のシフトおよび全体のシフトを確認することができる機能を作る.
+まず、局員のシフト情報を文字するモデルを作成する.
+次に、シフトスプレッドシートからセル情報を読み取り、モデルに保存するスクリプトを作成する.
+最後に、ユーザ情報を元にシフトを表示させる.
+
+### 設計
+
+```
+app: shift
+
+models:
+  Shift:
+    user: char
+    department: char
+    day: char (first or second)
+    weather: char (sun or rain)
+    06_00: char (ex. MT)
+    06_30: char
+    ...
+    21_00: char
+    
+pages:
+  /<int: user_id>: 局員のシフト表示画面
+  /whole: 全体のシフト表示画面
+```
