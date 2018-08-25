@@ -11,8 +11,12 @@ def get_value_list(tuple_2d):
 
 
 def save(user, day, weather, row, task):
-    shift, is_created = Shift.objects.get_or_create(user=user, day=day, weather=weather)
+    user = user.replace(' ', '')
+    task = task.replace(' ', '').replace('\n', '') if task else None
     time_str = row_to_time_str[row]
+    shift, is_created = Shift.objects.get_or_create(user=user, day=day, weather=weather)
+    if shift.__getattribute__(time_str):
+        return
     shift.__setattr__(time_str, task)
     shift.save()
 
@@ -74,9 +78,9 @@ def main():
     second_rain_sheet = second_wb['雨']
 
     # Registration
-    register(first_sun_sheet, day='first', weather='sun')
-    register(first_rain_sheet, day='first', weather='rain')
-    register(second_sun_sheet, day='second', weather='sun')
-    register(second_rain_sheet, day='second', weather='rain')
+    register(first_sun_sheet, day='1日目', weather='晴')
+    register(first_rain_sheet, day='1日目', weather='雨')
+    register(second_sun_sheet, day='2日目', weather='晴')
+    register(second_rain_sheet, day='2日目', weather='雨')
 
     print('Success saving all.')
