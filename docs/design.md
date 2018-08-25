@@ -95,13 +95,12 @@ app: shift
 models:
   Shift:
     user: char
-    department: char
     day: char (first or second)
     weather: char (sun or rain)
-    06_00: char (ex. MT)
-    06_30: char
+    _0600: char (ex. MTG)
+    _0630: char
     ...
-    21_00: char
+    _2330: char
     
 pages:
   /<int: user_id>: 局員のシフト表示画面

@@ -1,3 +1,51 @@
 from django.db import models
 
-# Create your models here.
+
+class Shift(models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.CharField(max_length=30)
+    day = models.CharField(max_length=10)
+    weather = models.CharField(max_length=10)
+    _0600 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _0630 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _0700 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _0730 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _0800 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _0830 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _0900 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _0930 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1000 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1030 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1100 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1130 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1200 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1230 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1300 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1330 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1400 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1430 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1500 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1530 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1600 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1630 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1700 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1730 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1800 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1830 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1900 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _1930 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _2000 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _2030 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _2100 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _2130 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _2200 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _2230 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _2300 = models.CharField(max_length=100, null=True, blank=True, default=None)
+    _2330 = models.CharField(max_length=100, null=True, blank=True, default=None)
+
+    class Meta:
+        db_table = 'shifts'
+        unique_together = ('user', 'day', 'weather')
+
+    def __str__(self):
+        return '{}({}_{})'.format(self.user, self.day, self.weather)
