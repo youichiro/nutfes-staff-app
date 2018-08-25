@@ -1,0 +1,7 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    {% for shift in shift_list %}
+        <p><a href="{% url 'personal_shift' shift.id %}">{{ shift.user }}</a></p>
+    {% endfor %}
+{% endblock %}
