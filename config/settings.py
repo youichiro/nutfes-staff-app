@@ -19,6 +19,7 @@ INSTALLED_APPS = [
     'account',
     'message',
     'shift',
+    'manual',
 ]
 
 MIDDLEWARE = [
