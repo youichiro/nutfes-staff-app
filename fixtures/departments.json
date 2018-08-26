@@ -1,0 +1,128 @@
+[
+  {
+    "model": "account.department",
+    "pk": 1,
+    "fields": {
+      "id": 1,
+      "name": "委員長",
+      "short_name": "委員長"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 2,
+    "fields": {
+      "id": 2,
+      "name": "副委員長",
+      "short_name": "副委員長"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 3,
+    "fields": {
+      "id": 3,
+      "name": "ゲスト部門",
+      "short_name": "ゲスト"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 4,
+    "fields": {
+      "id": 4,
+      "name": "総務局",
+      "short_name": "総務"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 5,
+    "fields": {
+      "id": 5,
+      "name": "参加団体部門",
+      "short_name": "参加団体"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 6,
+    "fields": {
+      "id": 6,
+      "name": "国際交流部門",
+      "short_name": "国際交流"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 7,
+    "fields": {
+      "id": 7,
+      "name": "物品部門",
+      "short_name": "物品"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 8,
+    "fields": {
+      "id": 8,
+      "name": "電力会場部門",
+      "short_name": "電力"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 9,
+    "fields": {
+      "id": 9,
+      "name": "衛生部門",
+      "short_name": "衛生"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 10,
+    "fields": {
+      "id": 10,
+      "name": "情報処理部門",
+      "short_name": "情報"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 11,
+    "fields": {
+      "id": 11,
+      "name": "企画局",
+      "short_name": "企画"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 12,
+    "fields": {
+      "id": 12,
+      "name": "財務局",
+      "short_name": "財務"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 13,
+    "fields": {
+      "id": 13,
+      "name": "渉外局",
+      "short_name": "渉外"
+    }
+  },
+  {
+    "model": "account.department",
+    "pk": 14,
+    "fields": {
+      "id": 14,
+      "name": "制作局",
+      "short_name": "制作"
+    }
+  }
+]
