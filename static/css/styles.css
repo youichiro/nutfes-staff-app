@@ -58,7 +58,7 @@ body {
     border: white solid 1px;
 }
 
-.task_cell {
+.shift_cell {
     background: cornflowerblue;
     padding: 10px 10px 10px 10px;
     display: flex;
@@ -96,16 +96,29 @@ body {
     overflow: scroll;
 }
 
+.shift_slide_wrap {
+    background: #CCCCCC;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    overflow: scroll;
+}
+
 .time_slide_box {
     border: white solid 1px;
     min-width: 3cm;
 }
 
-.user_slide_box {
+.shift_slide_box {
     border: white solid 1px;
     min-width: 4cm;
 }
 
 .name_cell {
     background: darkorange;
+}
+
+.name_cell a {
+    text-decoration: none;
+    color: white;
 }

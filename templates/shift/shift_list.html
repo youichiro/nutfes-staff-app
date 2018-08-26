@@ -9,23 +9,22 @@
         <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=4">2日目雨</a></li>
     </ul>
 
-{#    {% for shift in shift_list %}#}
-{#        <a href="{% url 'personal_shift' shift.id %}">{{ shift.user }}</a> {{ shift.shift_id }}#}
-{#    {% endfor %}#}
-
     <br>
 
     <div class="slide_wrap">
         <div class="time_slide_box ">
-            <div class="time_cell" style="height: 1cm;">時間帯</div>
+            <div class="time_cell" style="height: 2cm;">時間帯</div>
             {% for time in times %}
                 <div class="time_cell" style="height: 1cm;">{{ time }}</div>
             {% endfor %}
         </div>
         {% for tasks in tasks_set %}
-            <div class="user_slide_box">
-                <div class="task_cell name_cell" style="height: 1cm;">
-                    {{ tasks.0 }}
+            <div class="shift_slide_box">
+                <div class="shift_cell name_cell" style="height: 1cm;">
+                    {{ tasks.0.department }}
+                </div>
+                <div class="shift_cell name_cell" style="height: 1cm;">
+                    <a href="{% url 'personal_shift' tasks.0.id %}">{{ tasks.0.user }}</a>
                 </div>
                 {% include 'shift/base_timetable.html' with tasks=tasks.1 %}
             </div>
