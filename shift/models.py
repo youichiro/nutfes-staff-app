@@ -1,9 +1,11 @@
 from django.db import models
+from account.models import User, Department
 
 
 class Shift(models.Model):
     id = models.AutoField(primary_key=True)
     user = models.CharField(max_length=30)
+    department = models.CharField(max_length=30)
     day = models.CharField(max_length=10)
     weather = models.CharField(max_length=10)
     shift_id = models.IntegerField()
@@ -50,3 +52,9 @@ class Shift(models.Model):
 
     def __str__(self):
         return '{}({}_{})'.format(self.user, self.day, self.weather)
+
+    def get_user(self):
+        return User.objects.filter(name=self.user).first() or None
+
+    def get_department(self):
+        return Department.objects.filter(short_name=self.department).first() or None

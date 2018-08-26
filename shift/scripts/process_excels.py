@@ -10,11 +10,12 @@ def get_value_list(tuple_2d):
     return [[cell.value for cell in row] for row in tuple_2d]
 
 
-def save(user, day, weather, shift_id, row, task):
+def save(user, department, day, weather, shift_id, row, task):
     user = user.replace(' ', '')
     task = task.replace(' ', '').replace('\n', '') if task else None
     time_str = row_to_time_str[row]
-    shift, is_created = Shift.objects.get_or_create(user=user, day=day, weather=weather, shift_id=shift_id)
+    shift, is_created = Shift.objects.get_or_create(user=user, department=department,
+                                                    day=day, weather=weather, shift_id=shift_id)
     if shift.__getattribute__(time_str):
         return
     shift.__setattr__(time_str, task)
@@ -31,6 +32,15 @@ def register(sheet, day, weather, shift_id):
         name = cell.value
         col = cell.col_idx
         col_to_name[col] = name
+
+    # 列と局の対応表の作成
+    col_to_depart = {}
+    depart_cells = sheet['B2:EA2'][0]
+    depart = depart_cells[0].value
+    for cell in depart_cells:
+        depart = cell.value or depart
+        col = cell.col_idx
+        col_to_depart[col] = depart
 
     # 結合セルのシフト登録
     merged_cells = sheet.merged_cells.ranges
@@ -50,7 +60,8 @@ def register(sheet, day, weather, shift_id):
                 continue
 
             user = col_to_name[col]
-            save(user, day, weather, shift_id, row, task)
+            department = col_to_depart[col]
+            save(user, department, day, weather, shift_id, row, task)
 
     # 結合セル以外のシフト登録
     all_cells = sheet['B4:EA38']
@@ -59,8 +70,9 @@ def register(sheet, day, weather, shift_id):
             row = cell.row
             col = cell.col_idx
             user = col_to_name[col]
+            department = col_to_depart[col]
             task = cell.value
-            save(user, day, weather, shift_id, row, task)
+            save(user, department, day, weather, shift_id, row, task)
 
 
 def main():

@@ -22,13 +22,7 @@ class ShiftListView(ListView):
 
     def get_queryset(self):
         queryset = Shift.objects.filter(shift_id=1)
-        day_request = self.request.GET.get('day')
-        weather_request = self.request.GET.get('weather')
         shift_id_request = self.request.GET.get('shift_id')
-        if day_request:
-            queryset = Shift.objects.filter(day=day_request)
-        if weather_request:
-            queryset = Shift.objects.filter(weather=weather_request)
         if shift_id_request:
             queryset = Shift.objects.filter(shift_id=shift_id_request)
         return queryset
@@ -44,7 +38,8 @@ class ShiftListView(ListView):
         tasks_set = []
         for shift in queryset:
             tasks = [v for k, v in shift.__dict__.items() if k[0] == 't']
-            tasks_set.append([shift.user, prepare_task_list(tasks)])
+            tasks_set.append([shift, prepare_task_list(tasks)])
+        tasks_set.sort(key=lambda x: x[0].get_department().id)
         context['tasks_set'] = tasks_set
 
         return context
