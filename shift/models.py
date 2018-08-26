@@ -6,6 +6,7 @@ class Shift(models.Model):
     user = models.CharField(max_length=30)
     day = models.CharField(max_length=10)
     weather = models.CharField(max_length=10)
+    shift_id = models.IntegerField()
     t0600 = models.CharField(max_length=100, null=True, blank=True, default=None)
     t0630 = models.CharField(max_length=100, null=True, blank=True, default=None)
     t0700 = models.CharField(max_length=100, null=True, blank=True, default=None)

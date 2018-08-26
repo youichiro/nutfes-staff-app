@@ -9,6 +9,18 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <body>
+    <div id="header">
+        <h3>技大祭局員アプリ</h3>
+        <div class="user_status">
+            {% if user.is_authenticated %}
+                <p>ログイン中: {{ user.name }} <a href="{% url 'logout' %}">logout</a></p>
+            {% else %}
+                <p>ゲスト: <a href="{% url 'login' %}">ログイン</a> <a href="{% url 'registration' %}">ユーザ登録</a></p>
+            {% endif %}
+        </div>
+        <hr>
+    </div>
+
     <div id="main">
         {% block content %}{% endblock %}
     </div>

@@ -1,0 +1,15 @@
+{% for task in tasks %}
+    {% ifchanged task.0 %}
+        {% if not task.0 %}
+            <div class="task_cell non_cell" style="height: {{ task.1 }}cm;"> </div>
+        {% elif task.0 == '×' %}
+            <div class="task_cell batu_cell" style="height: {{ task.1 }}cm;">{{ task.0 }}</div>
+        {% elif task.0 == '休憩' %}
+            <div class="task_cell rest_cell" style="height: {{ task.1 }}cm;">{{ task.0 }}</div>
+        {% elif task.0 == 'フレパ' %}
+            <div class="task_cell park_cell" style="height: {{ task.1 }}cm;">{{ task.0 }}</div>
+        {% else %}
+            <div class="task_cell" style="height: {{ task.1 }}cm;">{{ task.0 }}</div>
+        {% endif %}
+    {% endifchanged %}
+{% endfor %}

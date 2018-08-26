@@ -10,18 +10,18 @@ def get_value_list(tuple_2d):
     return [[cell.value for cell in row] for row in tuple_2d]
 
 
-def save(user, day, weather, row, task):
+def save(user, day, weather, shift_id, row, task):
     user = user.replace(' ', '')
     task = task.replace(' ', '').replace('\n', '') if task else None
     time_str = row_to_time_str[row]
-    shift, is_created = Shift.objects.get_or_create(user=user, day=day, weather=weather)
+    shift, is_created = Shift.objects.get_or_create(user=user, day=day, weather=weather, shift_id=shift_id)
     if shift.__getattribute__(time_str):
         return
     shift.__setattr__(time_str, task)
     shift.save()
 
 
-def register(sheet, day, weather):
+def register(sheet, day, weather, shift_id):
     print('Saving: {}_{}_shift'.format(day, weather))
 
     # 列と名前の対応表の作成
@@ -50,7 +50,7 @@ def register(sheet, day, weather):
                 continue
 
             user = col_to_name[col]
-            save(user, day, weather, row, task)
+            save(user, day, weather, shift_id, row, task)
 
     # 結合セル以外のシフト登録
     all_cells = sheet['B4:EA38']
@@ -60,7 +60,7 @@ def register(sheet, day, weather):
             col = cell.col_idx
             user = col_to_name[col]
             task = cell.value
-            save(user, day, weather, row, task)
+            save(user, day, weather, shift_id, row, task)
 
 
 def main():
@@ -78,9 +78,9 @@ def main():
     second_rain_sheet = second_wb['雨']
 
     # Registration
-    register(first_sun_sheet, day='1日目', weather='晴')
-    register(first_rain_sheet, day='1日目', weather='雨')
-    register(second_sun_sheet, day='2日目', weather='晴')
-    register(second_rain_sheet, day='2日目', weather='雨')
+    register(first_sun_sheet, day='1日目', weather='晴', shift_id=1)
+    register(first_rain_sheet, day='1日目', weather='雨', shift_id=2)
+    register(second_sun_sheet, day='2日目', weather='晴', shift_id=3)
+    register(second_rain_sheet, day='2日目', weather='雨', shift_id=4)
 
     print('Success saving all.')
