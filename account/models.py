@@ -3,13 +3,16 @@ from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, Permis
 
 
 class Department(models.Model):
+    id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=100, unique=True)
+    short_name = models.CharField(max_length=100, unique=True)
 
     class Meta:
         db_table = 'departments'
+        ordering = ['id']
 
     def __str__(self):
-        return self.name
+        return self.short_name
 
 
 class UserManager(BaseUserManager):
@@ -40,8 +43,8 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    student_id = models.CharField(max_length=7, unique=True,
-                                  help_text='学生番号を入力してください. (ex. s0000000)')
+    student_id = models.CharField(max_length=9, unique=True,
+                                  help_text='学生番号を入力してください. (ex. s16312786)')
     name = models.CharField(max_length=100, help_text='名前を入力してください.')
     grade = models.CharField(max_length=2, help_text='学年を選択してください.')
     department = models.ManyToManyField(Department, help_text='所属している局・部門を選択してください.')

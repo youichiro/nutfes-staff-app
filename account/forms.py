@@ -47,11 +47,17 @@ class UserCreationForm(forms.ModelForm):
         fields = ('student_id', 'name', 'grade', 'department', 'phone_number')
 
     def clean_student_id(self):
-        regex = r'^s\d\d\d\d\d\d$'
+        regex = r'^s\d\d\d\d\d\d\d\d$'
         student_id = self.cleaned_data.get('student_id')
         if not re.match(regex, student_id):
             raise forms.ValidationError('学籍番号が正しくありません.')
         return student_id
+
+    def clean_name(self):
+        name = self.cleaned_data.get('name')
+        if ' ' in name or '　' in name:
+            raise forms.ValidationError('空白を入れずに入力してください.')
+        return name
 
     def clean_password2(self):
         password1 = self.cleaned_data.get('password1')
