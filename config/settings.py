@@ -6,6 +6,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'w#14-h_jsj+qddki8o-d163%x5%e%c7i_uxja3!5a9yn)gpj5='
 
 DEBUG = False
+DEPLOY = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -87,9 +88,9 @@ LOGOUT_REDIRECT_URL = 'my_shift'
 AUTH_USER_MODEL = 'account.User'
 
 
-try:
+if not DEPLOY:
     from .local_settings import DATABASES, DEBUG
-except ImportError:
+else:
     pass
 
 

@@ -1,0 +1,145 @@
+body {
+    padding: 30px 30px 30px 30px;
+}
+
+.user_status {
+    text-align: right;
+    float: right;
+}
+
+.user_status a:hover {
+    text-decoration: none;
+}
+
+.square_btn{
+    position: relative;
+    display: inline-block;
+    font-weight: bold;
+    padding: 0.25em 0.5em;
+    text-decoration: none;
+    color: #00BCD4;
+    background: #ECECEC;
+    transition: .4s;
+  }
+
+.square_btn:hover {
+    background: #00bcd4;
+    color: white;
+}
+
+#----------nav---------- {}
+
+.nav {
+    display: table;
+    width: 100%;
+    background: #EEEEEE;
+}
+
+.nav__item {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 25%;
+}
+
+.nav__item + .nav__item {
+    border-left: 1px solid #CCCCCC;
+}
+
+.nav__item a {
+    display: block;
+    padding: 15px 0;
+    color: #666666;
+    text-decoration: none;
+}
+
+#----------time_table---------- {}
+
+.float_2col {
+    overflow: hidden;
+}
+
+.float_left {
+    float: left;
+    width: 20%;
+}
+
+.float_right {
+    float: right;
+    width: 80%;
+}
+
+
+.time_cell {
+    background: lightgoldenrodyellow;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: white solid 1px;
+}
+
+.shift_cell {
+    background: cornflowerblue;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: white solid 1px;
+    color: white;
+}
+
+.non_cell {
+    background: #CCCCCC;
+}
+
+.batu_cell {
+    background: #CCCCCC;
+}
+
+.rest_cell {
+    background: lightgreen;
+    color: black;
+}
+
+.park_cell {
+    background: lightcoral;
+}
+
+
+#----------whole_time_table---------- {}
+
+.slide_wrap {
+    background: #CCCCCC;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    overflow: scroll;
+}
+
+.shift_slide_wrap {
+    background: #CCCCCC;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    overflow: scroll;
+}
+
+.time_slide_box {
+    border: white solid 1px;
+    min-width: 3cm;
+}
+
+.shift_slide_box {
+    border: white solid 1px;
+    min-width: 4cm;
+}
+
+.name_cell {
+    background: darkorange;
+}
+
+.name_cell a {
+    text-decoration: none;
+    color: white;
+}
