@@ -1,5 +1,6 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView, ListView, DetailView
+from django.shortcuts import redirect
 from .models import Shift
 from .scripts.const import time_to_time
 
@@ -77,8 +78,6 @@ class MyShiftView(LoginRequiredMixin, TemplateView):
         context = super().get_context_data()
         default_shift_id = 1  # シフトの指定がない場合の表示するシフト
         user = self.request.user
-        if not user.is_authenticated:
-            return
         if not Shift.objects.filter(user=user).exists():
             return
         shift = Shift.objects.filter(user=user, shift_id=default_shift_id).first()
