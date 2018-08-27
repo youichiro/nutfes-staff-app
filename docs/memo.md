@@ -1,8 +1,8 @@
 ## account
 
 - [x] カスタムユーザモデルの作成
-- [ ] ログイン画面、アカウント作成画面のスタイル
-- [ ] 表示権限(login_require)
+- [x] ログイン画面、アカウント作成画面のスタイル
+- [x] 表示権限(login_require)
 - [ ] 学生番号のバリデーション
 
 ## manual
@@ -16,7 +16,8 @@
 - [x] エクセルからシフト取得&DB保存
 - [x] 全体シフトの表示(shift_list.html)
 - [x] 個別シフトの表示(shift_detail.html)
-- [ ] 個別シフト画面に他のシフトのリンクを貼る
+- [x] 個別シフト画面に他のシフトのリンクを貼る
+- [x] ログインユーザのシフトを表示
 - [ ] 現在時刻のシフトを強調
 - [ ] 時間軸の固定化
 - [ ] 局を結合して表示
@@ -28,12 +29,10 @@
 - `/`: `home.html`
 - `account/login`: `login.html`
 - `account/registration`: `registration.html`
-- `message/`: `message_list.html`
-- `message/form/`: `message_form.html`
-- `message/<id>/reply_form`: `reply_form.html`
 - `shift/`: `shift_list.html`
 - `shift/<id>/`: `shift_detail.html`
-- `manual/<num>`: Driveのリンク
+- `shift/my_shift`: `shift_detail.html`
+- `manual/`: `manual_links.html`
 
 
 ## 初期作業

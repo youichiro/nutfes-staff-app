@@ -81,7 +81,8 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'), 'static'
 ]
 
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'my_shift'
+LOGOUT_REDIRECT_URL = 'my_shift'
 
 AUTH_USER_MODEL = 'account.User'

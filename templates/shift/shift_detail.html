@@ -1,7 +1,26 @@
 {% extends 'base.html' %}
 
+{% block title %}{{ shift.day }}{{ shift.weather }} {{ shift.user }}{% endblock %}
+{% block headline %}{{ shift.day }}{{ shift.weather }}シフト  {{ shift.user }}{% endblock %}
+
 {% block content %}
-    <h3>{{ shift.day }}{{ shift.weather }}シフト  {{ shift.user }}</h3>
+
+    <ul class="nav">
+        <li class="nav__item">
+            <a href="{% url 'personal_shift' four_shift.0.id %}">{{ four_shift.0.day }}{{ four_shift.0.weather }}</a>
+        </li>
+        <li class="nav__item">
+            <a href="{% url 'personal_shift' four_shift.1.id %}">{{ four_shift.1.day }}{{ four_shift.1.weather }}</a>
+        </li>
+        <li class="nav__item">
+            <a href="{% url 'personal_shift' four_shift.2.id %}">{{ four_shift.2.day }}{{ four_shift.2.weather }}</a>
+        </li>
+        <li class="nav__item">
+            <a href="{% url 'personal_shift' four_shift.3.id %}">{{ four_shift.3.day }}{{ four_shift.3.weather }}</a>
+        </li>
+    </ul>
+
+    <br>
 
     <div class="float_2col">
         <div class="float_left">

@@ -9,17 +9,23 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 </head>
 <body>
-    <div id="header">
-        <h3>技大祭局員アプリ</h3>
-        <div class="user_status">
+    <div id="headline" class="float_2col">
+        <div class="user_status float_right" style="width: 40%;">
             {% if user.is_authenticated %}
-                <p>ログイン中: {{ user.name }} <a href="{% url 'logout' %}">logout</a></p>
+                <p>ログイン中: {{ user.name }} <a href="{% url 'logout' %}" style="color: #00BCD4;">logout</a></p>
+                <p>
+                    <a href="{% url 'whole_shift' %}" class="square_btn whole_shift_btn">▶︎ 全体シフト</a>
+                    <a href="{% url 'my_shift' %}" class="square_btn my_shift_btn">▶︎ 自分のシフト</a>
+                    <a href="{% url 'manual' %}" class="square_btn manual_btn">▶︎ マニュアル</a>
+                </p>
             {% else %}
                 <p>ゲスト: <a href="{% url 'login' %}">ログイン</a> <a href="{% url 'registration' %}">ユーザ登録</a></p>
             {% endif %}
         </div>
-        <hr>
+        <h1 class="float_left" style="width: 60%;">{% block headline %}{% endblock %}</h1>
     </div>
+
+    <hr>
 
     <div id="main">
         {% block content %}{% endblock %}

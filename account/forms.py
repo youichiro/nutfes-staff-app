@@ -19,32 +19,45 @@ GRADE_CHOICES = (
 
 class UserCreationForm(forms.ModelForm):
     password1 = forms.CharField(
-        label='Password',
+        label='パスワード',
         strip=False,
-        widget=forms.PasswordInput,
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         help_text=password_validation.password_validators_help_text_html(),
     )
     password2 = forms.CharField(
-        label='Password confirmation',
-        widget=forms.PasswordInput,
+        label='パスワード(確認)',
+        widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         strip=False,
-        help_text='Enter the same password as before.',
+        help_text='上のパスワードと同じパスワードを入力してください.',
     )
 
     grade = forms.ChoiceField(
-        widget=forms.Select,
+        label='学年',
+        widget=forms.Select(attrs={'class': 'form-control'}),
         choices=GRADE_CHOICES,
     )
 
     department = forms.ModelMultipleChoiceField(
+        label='局・部門',
         queryset=Department.objects.all(),
-        widget=forms.CheckboxSelectMultiple,
+        widget=forms.SelectMultiple(attrs={'class': 'form-control'}),
         required=True,
+        help_text='複数選択できます.',
     )
 
     class Meta:
         model = User
         fields = ('student_id', 'name', 'grade', 'department', 'phone_number')
+        labels = {
+            'student_id': '学生番号',
+            'name': '名前',
+            'phone_number': '電話番号'
+        }
+        widgets = {
+            'student_id': forms.TextInput(attrs={'class': 'form-control'}),
+            'name': forms.TextInput(attrs={'class': 'form-control'}),
+            'phone_number': forms.TextInput(attrs={'class': 'form-control'}),
+        }
 
     def clean_student_id(self):
         regex = r'^s\d\d\d\d\d\d\d\d$'

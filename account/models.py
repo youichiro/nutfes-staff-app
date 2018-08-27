@@ -12,7 +12,7 @@ class Department(models.Model):
         ordering = ['id']
 
     def __str__(self):
-        return self.short_name
+        return self.name
 
 
 class UserManager(BaseUserManager):

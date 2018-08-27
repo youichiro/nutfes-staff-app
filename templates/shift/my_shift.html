@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ shift.day }}{{ shift.weather }} {{ shift.user }}{% endblock %}
+{% block headline %}{{ shift.day }}{{ shift.weather }}シフト  {{ shift.user }}{% endblock %}
+
+{% block content %}
+    <div class="float_2col">
+        <div class="float_left">
+            {% for time in times %}
+                <div class="time_cell" style="height: 1cm;">{{ time }}</div>
+            {% endfor %}
+        </div>
+        <div class="float_right">
+            {% include 'shift/base_timetable.html' with tasks=tasks %}
+        </div>
+    </div>
+
+{% endblock %}
