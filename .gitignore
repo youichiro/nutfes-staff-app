@@ -2,7 +2,7 @@
 __pycache__
 .idea
 .python-version
-config/database.py
+config/local_settings.py
 config/manual_urls.py
 !__init__.py
 *.xlsx

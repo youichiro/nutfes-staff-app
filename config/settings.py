@@ -1,13 +1,13 @@
 import os
-from .database import DATABASE
+
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 SECRET_KEY = 'w#14-h_jsj+qddki8o-d163%x5%e%c7i_uxja3!5a9yn)gpj5='
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -17,7 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'account',
-    'message',
+    # 'message',
     'shift',
     'manual',
 ]
@@ -52,8 +52,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'config.wsgi.application'
 
-DATABASES = DATABASE
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -86,3 +84,14 @@ LOGIN_REDIRECT_URL = 'my_shift'
 LOGOUT_REDIRECT_URL = 'my_shift'
 
 AUTH_USER_MODEL = 'account.User'
+
+
+try:
+    from .local_settings import DATABASES, DEBUG
+except ImportError:
+    pass
+
+
+# Heroku settings
+import django_heroku
+django_heroku.settings(locals())
