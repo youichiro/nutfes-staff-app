@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.shortcuts import HttpResponseRedirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -7,4 +8,5 @@ urlpatterns = [
     # path('message/', include('message.urls')),
     path('shift/', include('shift.urls')),
     path('manual/', include('manual.urls')),
+    path('', lambda r: HttpResponseRedirect('shift/my_shift/')),
 ]
