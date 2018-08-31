@@ -9,6 +9,9 @@
         <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=2">1日目雨</a></li>
         <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=3">2日目晴</a></li>
         <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=4">2日目雨</a></li>
+        <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=5">準備日晴</a></li>
+        <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=6">準備日雨</a></li>
+        <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=7">片付け日</a></li>
     </ul>
 
     <br>
@@ -16,22 +19,23 @@
     <div class="slide_wrap">
         <div class="time_slide_box ">
             <div class="time_cell" style="height: 2cm;">時間帯</div>
-            {% for time in times %}
-                <div class="time_cell" style="height: 1cm;">{{ time }}</div>
+            {% for time, flag in times %}
+                <div class="time_cell{% if flag > 0 %} now_time_cell{% endif %}" style="height: 1cm;">{{ time }}</div>
             {% endfor %}
         </div>
-        {% for tasks in tasks_set %}
-            <div class="shift_slide_box">
-                <div class="shift_cell name_cell" style="height: 1cm;">
-                    {{ tasks.0.department }}
+        <div class="shift_slide_wrap">
+            {% for tasks in tasks_set %}
+                <div class="shift_slide_box">
+                    <div class="shift_cell name_cell" style="height: 1cm;">
+                        {{ tasks.0.department }}
+                    </div>
+                    <div class="shift_cell name_cell" style="height: 1cm;">
+                        <a href="{% url 'personal_shift' tasks.0.id %}">{{ tasks.0.user }}</a>
+                    </div>
+                    {% include 'shift/base_timetable.html' with tasks=tasks.1 %}
                 </div>
-                <div class="shift_cell name_cell" style="height: 1cm;">
-                    <a href="{% url 'personal_shift' tasks.0.id %}">{{ tasks.0.user }}</a>
-                </div>
-                {% include 'shift/base_timetable.html' with tasks=tasks.1 %}
-            </div>
-        {% endfor %}
-
+            {% endfor %}
+        </div>
     </div>
 
 {% endblock %}

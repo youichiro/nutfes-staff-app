@@ -1,15 +1,23 @@
-{% for task in tasks %}
-    {% ifchanged task.0 %}
-        {% if not task.0 %}
-            <div class="shift_cell non_cell" style="height: {{ task.1 }}cm;"> </div>
-        {% elif task.0 == '×' %}
-            <div class="shift_cell batu_cell" style="height: {{ task.1 }}cm;">{{ task.0 }}</div>
-        {% elif task.0 == '休憩' %}
-            <div class="shift_cell rest_cell" style="height: {{ task.1 }}cm;">{{ task.0 }}</div>
-        {% elif task.0 == 'フレパ' %}
-            <div class="shift_cell park_cell" style="height: {{ task.1 }}cm;">{{ task.0 }}</div>
+{% for task, count, flag in tasks %}
+    {% ifchanged task %}
+        {% if not task %}
+            <div class="shift_cell non_cell" style="height: {{ count }}cm;"></div>
+        {% elif task == '×' %}
+            <div class="shift_cell batu_cell" style="height: {{ count }}cm;">
+                {{ task }}
+            </div>
+        {% elif task == '休憩' %}
+            <div class="shift_cell rest_cell{% if flag > 0 %} now_cell{% endif %}" style="height: {{ count }}cm;">
+                {{ task }}
+            </div>
+        {% elif task == 'フレパ' %}
+            <div class="shift_cell park_cell{% if flag > 0 %} now_cell{% endif %}" style="height: {{ count }}cm;">
+                {{ task }}
+            </div>
         {% else %}
-            <div class="shift_cell" style="height: {{ task.1 }}cm;">{{ task.0 }}</div>
+            <div class="shift_cell{% if flag > 0 %} now_cell{% endif %}" style="height: {{ count }}cm;">
+                {{ task }}
+            </div>
         {% endif %}
     {% endifchanged %}
 {% endfor %}

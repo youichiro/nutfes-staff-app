@@ -22,12 +22,12 @@ def save(user, department, day, weather, shift_id, row, task):
     shift.save()
 
 
-def register(sheet, day, weather, shift_id):
-    print('Saving: {}_{}_shift'.format(day, weather))
+def register(sheet, end_column, day, weather, shift_id):
+    print('Saving: {}{}_shift'.format(day, weather))
 
     # 列と名前の対応表の作成
     col_to_name = {}
-    name_cells = sheet['B3:EA3'][0]
+    name_cells = sheet['B3:'+end_column+'3'][0]
     for cell in name_cells:
         name = cell.value
         col = cell.col_idx
@@ -35,7 +35,7 @@ def register(sheet, day, weather, shift_id):
 
     # 列と局の対応表の作成
     col_to_depart = {}
-    depart_cells = sheet['B2:EA2'][0]
+    depart_cells = sheet['B2:'+end_column+'2'][0]
     depart = depart_cells[0].value
     for cell in depart_cells:
         depart = cell.value or depart
@@ -64,7 +64,7 @@ def register(sheet, day, weather, shift_id):
             save(user, department, day, weather, shift_id, row, task)
 
     # 結合セル以外のシフト登録
-    all_cells = sheet['B4:EA38']
+    all_cells = sheet['B4:'+end_column+'38']
     for row_cells in tqdm(all_cells):
         for cell in row_cells:
             row = cell.row
@@ -76,23 +76,38 @@ def register(sheet, day, weather, shift_id):
 
 
 def main():
-    # Workbooks
+    # files
     current_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
     first_shift_file = os.path.join(current_dir, 'scripts/first_shift.xlsx')
     second_shift_file = os.path.join(current_dir, 'scripts/second_shift.xlsx')
+    preparation_shift_file = os.path.join(current_dir, 'scripts/preparation_shift.xlsx')
+    cleanup_shift_file = os.path.join(current_dir, 'scripts/cleanup_shift.xlsx')
+
+    # Workbooks
     first_wb = openpyxl.load_workbook(first_shift_file)
     second_wb = openpyxl.load_workbook(second_shift_file)
+    preparation_wb = openpyxl.load_workbook(preparation_shift_file)
+    cleanup_wb = openpyxl.load_workbook(cleanup_shift_file)
 
     # Worksheets
     first_sun_sheet = first_wb['晴']
     first_rain_sheet = first_wb['雨']
     second_sun_sheet = second_wb['晴']
     second_rain_sheet = second_wb['雨']
+    preparation_sun_sheet = preparation_wb[preparation_wb.sheetnames[0]]
+    preparation_rain_sheet = preparation_wb[preparation_wb.sheetnames[1]]
+    cleanup_sheet = cleanup_wb[cleanup_wb.sheetnames[0]]
+
+    # Delete all
+    Shift.objects.all().delete()
 
     # Registration
-    register(first_sun_sheet, day='1日目', weather='晴', shift_id=1)
-    register(first_rain_sheet, day='1日目', weather='雨', shift_id=2)
-    register(second_sun_sheet, day='2日目', weather='晴', shift_id=3)
-    register(second_rain_sheet, day='2日目', weather='雨', shift_id=4)
+    register(first_sun_sheet, end_column='EA', day='1日目', weather='晴', shift_id=1)
+    register(first_rain_sheet, end_column='EA', day='1日目', weather='雨', shift_id=2)
+    register(second_sun_sheet, end_column='EG', day='2日目', weather='晴', shift_id=3)
+    register(second_rain_sheet, end_column='EG', day='2日目', weather='雨', shift_id=4)
+    register(preparation_sun_sheet, end_column='EI', day='準備日', weather='晴', shift_id=5)
+    register(preparation_rain_sheet, end_column='EI', day='準備日', weather='雨', shift_id=6)
+    register(cleanup_sheet, end_column='EQ', day='片付け日', weather='', shift_id=7)
 
     print('Success saving all.')

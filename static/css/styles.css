@@ -39,11 +39,9 @@ body {
     display: table-cell;
     text-align: center;
     vertical-align: middle;
-    width: 25%;
-}
-
-.nav__item + .nav__item {
-    border-left: 1px solid #CCCCCC;
+    width: 14.285%;
+    border-left: #CCCCCC solid 1px;
+    border-right: #CCCCCC solid 1px;
 }
 
 .nav__item a {
@@ -80,32 +78,44 @@ body {
 }
 
 .shift_cell {
-    background: cornflowerblue;
+    background: #3875d7;
     padding: 10px 10px 10px 10px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: white solid 1px;
     color: white;
+    font-weight: bold;
 }
 
 .non_cell {
     background: #CCCCCC;
+    font-weight: normal;
 }
 
 .batu_cell {
     background: #CCCCCC;
+    font-weight: normal;
 }
 
 .rest_cell {
     background: lightgreen;
     color: black;
+    font-weight: normal;
 }
 
 .park_cell {
-    background: lightcoral;
+    background: hotpink;
 }
 
+.now_cell {
+    border: orangered solid 10px;
+}
+
+.now_time_cell {
+    background: orangered;
+    color: white;
+}
 
 #----------whole_time_table---------- {}
 
@@ -114,7 +124,13 @@ body {
     display: flex;
     width: 100%;
     margin: 0 auto;
-    overflow: scroll;
+}
+
+.time_slide_box {
+    border: white solid 1px;
+    min-width: 3cm;
+    flex-grow: 0;
+    flex-basis: auto;
 }
 
 .shift_slide_wrap {
@@ -122,12 +138,9 @@ body {
     display: flex;
     width: 100%;
     margin: 0 auto;
+    flex-grow: 1;
+    flex-basis: 0;
     overflow: scroll;
-}
-
-.time_slide_box {
-    border: white solid 1px;
-    min-width: 3cm;
 }
 
 .shift_slide_box {
@@ -137,9 +150,10 @@ body {
 
 .name_cell {
     background: darkorange;
+    color: black;
 }
 
 .name_cell a {
     text-decoration: none;
-    color: white;
+    color: black;
 }

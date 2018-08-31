@@ -6,26 +6,23 @@
 {% block content %}
 
     <ul class="nav">
-        <li class="nav__item">
-            <a href="{% url 'personal_shift' four_shift.0.id %}">{{ four_shift.0.day }}{{ four_shift.0.weather }}</a>
-        </li>
-        <li class="nav__item">
-            <a href="{% url 'personal_shift' four_shift.1.id %}">{{ four_shift.1.day }}{{ four_shift.1.weather }}</a>
-        </li>
-        <li class="nav__item">
-            <a href="{% url 'personal_shift' four_shift.2.id %}">{{ four_shift.2.day }}{{ four_shift.2.weather }}</a>
-        </li>
-        <li class="nav__item">
-            <a href="{% url 'personal_shift' four_shift.3.id %}">{{ four_shift.3.day }}{{ four_shift.3.weather }}</a>
-        </li>
+        {% for p_shift in personal_shifts %}
+            {% if p_shift %}
+                <li class="nav__item">
+                    <a href="{% url 'personal_shift' p_shift.id %}">
+                        {{ p_shift.day }}{{ p_shift.weather }}
+                    </a>
+                </li>
+            {% endif %}
+        {% endfor %}
     </ul>
 
     <br>
 
     <div class="float_2col">
         <div class="float_left">
-            {% for time in times %}
-                <div class="time_cell" style="height: 1cm;">{{ time }}</div>
+            {% for time, flag in times %}
+                <div class="time_cell{% if flag %} now_time_cell{% endif %}" style="height: 1cm;">{{ time }}</div>
             {% endfor %}
         </div>
         <div class="float_right">
