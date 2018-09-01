@@ -12,10 +12,13 @@
     <div id="headline" class="float_2col">
         <div class="user_status float_right" style="width: 40%;">
             {% if user.is_authenticated %}
-                <p>ログイン中: {{ user.name }} <a href="{% url 'logout' %}" style="color: #00BCD4;">logout</a></p>
                 <p>
-                    <a href="{% url 'whole_shift' %}" class="square_btn whole_shift_btn">▶︎ 全体シフト</a>
+                    ログイン中: {{ user.name }} <a href="{% url 'logout' %}" style="color: #00BCD4;">logout</a>
+                    {% if user.is_staff %}<a href="{% url 'admin:index' %}" style="color: indianred">管理画面</a>{% endif %}
+                </p>
+                <p>
                     <a href="{% url 'my_shift' %}" class="square_btn my_shift_btn">▶︎ 自分のシフト</a>
+                    <a href="{% url 'whole_shift' %}" class="square_btn whole_shift_btn">▶︎ 全体シフト</a>
                     <a href="{% url 'manual' %}" class="square_btn manual_btn">▶︎ マニュアル</a>
                 </p>
             {% else %}

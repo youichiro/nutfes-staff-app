@@ -51,7 +51,7 @@ class Shift(models.Model):
         unique_together = ('user', 'day', 'weather')
 
     def __str__(self):
-        return '{}({}_{})'.format(self.user, self.day, self.weather)
+        return '{}({}{})'.format(self.user, self.day, self.weather)
 
     def get_user(self):
         return User.objects.filter(name=self.user).first() or None

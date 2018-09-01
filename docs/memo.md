@@ -3,13 +3,19 @@
 - [x] カスタムユーザモデルの作成
 - [x] ログイン画面、アカウント作成画面のスタイル
 - [x] 表示権限(login_require)
+- [x] staff権限
 - [ ] 学生番号のバリデーション
+
 
 ## manual
 
 - [x] 対応マニュアルPDFの表示
 
+
 ## message
+
+- 今年度は実装しない
+
 
 ## shift
 
@@ -42,4 +48,5 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py loaddata fixtures/departments.json
 python manage.py shift_registration
+python manage.py collectstatic
 ```

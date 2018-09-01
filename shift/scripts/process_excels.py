@@ -102,12 +102,12 @@ def main():
     Shift.objects.all().delete()
 
     # Registration
-    register(first_sun_sheet, end_column='EA', day='1日目', weather='晴', shift_id=1)
-    register(first_rain_sheet, end_column='EA', day='1日目', weather='雨', shift_id=2)
-    register(second_sun_sheet, end_column='EG', day='2日目', weather='晴', shift_id=3)
-    register(second_rain_sheet, end_column='EG', day='2日目', weather='雨', shift_id=4)
-    register(preparation_sun_sheet, end_column='EI', day='準備日', weather='晴', shift_id=5)
-    register(preparation_rain_sheet, end_column='EI', day='準備日', weather='雨', shift_id=6)
+    register(preparation_sun_sheet, end_column='EI', day='準備日', weather='晴', shift_id=1)
+    register(preparation_rain_sheet, end_column='EI', day='準備日', weather='雨', shift_id=2)
+    register(first_sun_sheet, end_column='EA', day='1日目', weather='晴', shift_id=3)
+    register(first_rain_sheet, end_column='EA', day='1日目', weather='雨', shift_id=4)
+    register(second_sun_sheet, end_column='EG', day='2日目', weather='晴', shift_id=5)
+    register(second_rain_sheet, end_column='EG', day='2日目', weather='雨', shift_id=6)
     register(cleanup_sheet, end_column='EQ', day='片付け日', weather='', shift_id=7)
 
     print('Success saving all.')
