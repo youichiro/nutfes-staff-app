@@ -12,11 +12,14 @@ IMPORTANCE_CHOICES = (
 
 
 class MessageForm(forms.ModelForm):
-    importance = forms.ChoiceField(choices=IMPORTANCE_CHOICES, widget=forms.Select)
-
     class Meta:
         model = Message
         fields = ('text', 'importance')
+        labels = {'text': '', 'importance': '重要度'}
+        widgets = {
+            'text': forms.Textarea(attrs={'class': 'form-control', 'placeholder': 'メッセージ'}),
+            'importance': forms.Select(attrs={'class': 'form-control'}, choices=IMPORTANCE_CHOICES),
+        }
 
 
 class ReplyForm(forms.ModelForm):

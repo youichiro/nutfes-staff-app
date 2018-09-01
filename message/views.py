@@ -1,31 +1,32 @@
 from django.views.generic import ListView, CreateView
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.contrib.auth.mixins import LoginRequiredMixin
 from .forms import MessageForm, ReplyForm
 from .models import Message, Reply
 
 
-class MessageListView(ListView):
+class MessageListView(LoginRequiredMixin, ListView):
     model = Message
     template_name = 'message/message_list.html'
     queryset = model.objects.all().prefetch_related('reply_set')
 
 
-class MessageCreateView(CreateView):
+class MessageCreateView(LoginRequiredMixin, CreateView):
     model = Message
     template_name = 'message/message_form.html'
     form_class = MessageForm
-    success_url = reverse_lazy('message_view')
+    success_url = reverse_lazy('message_form')
 
     def form_valid(self, form):
         user = self.request.user
         message = form.save(commit=False)
         message.user = user
         message.save()
-        return redirect('message_view')
+        return redirect('message_form')
 
 
-class ReplyCreateView(CreateView):
+class ReplyCreateView(LoginRequiredMixin, CreateView):
     model = Reply
     template_name = 'message/reply_form.html'
     form_class = ReplyForm
