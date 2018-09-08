@@ -10,7 +10,7 @@
 </head>
 <body>
     <div id="headline" class="float_2col">
-        <div class="user_status float_right" style="width: 40%;">
+        <div class="user_status float_right" style="width: 50%;">
             {% if user.is_authenticated %}
                 <p>
                     ログイン中: {{ user.name }} <a href="{% url 'logout' %}" style="color: #00BCD4;">logout</a>
@@ -26,7 +26,7 @@
                 <p>ゲスト: <a href="{% url 'login' %}">ログイン</a> <a href="{% url 'registration' %}">ユーザ登録</a></p>
             {% endif %}
         </div>
-        <h1 class="float_left" style="width: 60%;">{% block headline %}{% endblock %}</h1>
+        <h1 class="float_left" style="width: 50%;">{% block headline %}{% endblock %}</h1>
     </div>
 
     <hr>
