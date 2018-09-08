@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ timetable_list.0.day }}{{ timetable_list.0.weather }}タイムテーブル{% endblock %}
+{% block headline %}{{ timetable_list.0.day }}{{ timetable_list.0.weather }}タイムテーブル{% endblock %}
+
+{% block content %}
+    <ul class="nav">
+        <li class="nav__item_t"><a href="{% url 'timetable' %}?sheet_id=1">1日目晴</a></li>
+        <li class="nav__item_t"><a href="{% url 'timetable' %}?sheet_id=2">1日目雨</a></li>
+        <li class="nav__item_t"><a href="{% url 'timetable' %}?sheet_id=3">2日目晴</a></li>
+        <li class="nav__item_t"><a href="{% url 'timetable' %}?sheet_id=4">2日目雨</a></li>
+    </ul>
+
+    <br>
+
+    <div class="slide_wrap">
+        <div class="time_slide_box ">
+            <div class="time_cell" style="height: 1cm; background: white;"></div>
+            {% for time, flag in times %}
+                <div class="time_cell time_cell_t{% if flag > 0 %} now_time_cell{% endif %}" style="height: 1cm;">{{ time }}</div>
+            {% endfor %}
+        </div>
+        <div class="shift_slide_wrap">
+            {% for events in events_set %}
+                <div class="shift_slide_box">
+                    <div class="shift_cell place_cell" style="height: 1cm;">
+                        {{ events.0.place }}
+                    </div>
+                    {% for event, count, flag in events.1 %}
+                        {% ifchanged event %}
+                            {% if not event %}
+                                <div class="event_cell non_cell" style="height: {{ count }}cm;"></div>
+                            {% else %}
+                                <div class="event_cell{% if flag > 0 %} now_cell{% endif %}" style="height: {{ count }}cm;">
+                                    {{ event }}
+                                </div>
+                            {% endif %}
+                        {% endifchanged %}
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

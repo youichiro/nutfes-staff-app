@@ -51,7 +51,23 @@ body {
     text-decoration: none;
 }
 
-#----------time_table---------- {}
+.nav__item_t {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    width: 25%;
+    border-left: #CCCCCC solid 1px;
+    border-right: #CCCCCC solid 1px;
+}
+
+.nav__item_t a {
+    display: block;
+    padding: 15px 0;
+    color: #666666;
+    text-decoration: none;
+}
+
+#----------table---------- {}
 
 .float_2col {
     overflow: hidden;
@@ -88,11 +104,6 @@ body {
     font-weight: bold;
 }
 
-.non_cell {
-    background: #CCCCCC;
-    font-weight: normal;
-}
-
 .batu_cell {
     background: #CCCCCC;
     font-weight: normal;
@@ -108,16 +119,7 @@ body {
     background: hotpink;
 }
 
-.now_cell {
-    border: orangered solid 10px;
-}
-
-.now_time_cell {
-    background: orangered;
-    color: white;
-}
-
-#----------whole_time_table---------- {}
+#----------whole_shift---------- {}
 
 .slide_wrap {
     background: #CCCCCC;
@@ -156,4 +158,40 @@ body {
 .name_cell a {
     text-decoration: none;
     color: black;
+}
+
+#----------timetable---------- {}
+
+.place_cell {
+    background: white;
+    color: black;
+}
+
+.event_cell {
+    background: darkorange;
+    padding: 10px 10px 10px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: white solid 1px;
+    color: white;
+    font-weight: bold;
+}
+
+.non_cell {
+    background: #CCCCCC;
+    font-weight: normal;
+}
+
+.time_cell_t {
+    background: #D9F8D4;
+}
+
+.now_cell {
+    border: orangered solid 10px;
+}
+
+.now_time_cell {
+    background: orangered;
+    color: white;
 }

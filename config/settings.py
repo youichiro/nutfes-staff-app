@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'message',
     'shift',
     'manual',
+    'timetable',
 ]
 
 MIDDLEWARE = [

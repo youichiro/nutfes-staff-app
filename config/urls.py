@@ -8,5 +8,6 @@ urlpatterns = [
     # path('message/', include('message.urls')),
     path('shift/', include('shift.urls')),
     path('manual/', include('manual.urls')),
+    path('timetable/', include('timetable.urls')),
     path('', lambda r: HttpResponseRedirect('shift/my_shift/')),
 ]

@@ -30,6 +30,11 @@
 - [ ] スタイル微修正
 
 
+## timetable
+
+- [x] エクセルからタイムテーブル取得&DB保存
+- [x] 表示
+
 ## ページング
 
 - `/`: `home.html`
@@ -39,6 +44,7 @@
 - `shift/<id>/`: `shift_detail.html`
 - `shift/my_shift`: `shift_detail.html`
 - `manual/`: `manual_links.html`
+- `timetable/`: `timetable_list.html`
 
 
 ## 初期作業
@@ -48,5 +54,6 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py loaddata fixtures/departments.json
 python manage.py shift_registration
+python manage.py timetable_registration
 python manage.py collectstatic
 ```
