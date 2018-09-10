@@ -72,12 +72,17 @@ class ShiftListView(LoginRequiredMixin, ListView):
         queryset = Shift.objects.filter(shift_id=get_default_shift_id())
         shift_id_request = self.request.GET.get('shift_id')
         if shift_id_request:
-            queryset = Shift.objects.filter(shift_id=shift_id_request)
+            if int(shift_id_request) in list(Shift.objects.values_list('shift_id', flat=True)):
+                queryset = Shift.objects.filter(shift_id=shift_id_request)
+            else:
+                queryset = None
         return queryset
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         queryset = self.get_queryset()
+        if not queryset:
+            return context
 
         first_query = queryset.first()
         times, _, flags = get_times_and_tasks(first_query)

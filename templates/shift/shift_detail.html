@@ -13,6 +13,10 @@
                         {{ p_shift.day }}{{ p_shift.weather }}
                     </a>
                 </li>
+            {% else %}
+                <li class="nav__item">
+                    <a href="">×</a>
+                </li>
             {% endif %}
         {% endfor %}
     </ul>

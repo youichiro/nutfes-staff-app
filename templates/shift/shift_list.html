@@ -1,17 +1,36 @@
 {% extends 'base.html' %}
 
-{% block title %}{{ shift_list.0.day }}{{ shift_list.0.weather }} 全体シフト{% endblock %}
-{% block headline %}{{ shift_list.0.day }}{{ shift_list.0.weather }} 全体シフト{% endblock %}
+{% block title %}
+    {% if shift_list %}
+        {{ shift_list.0.day }}{{ shift_list.0.weather }} 全体シフト
+    {% else %}
+        ×
+    {% endif %}
+{% endblock %}
+
+{% block headline %}
+    {% if shift_list %}
+        {{ shift_list.0.day }}{{ shift_list.0.weather }} 全体シフト
+    {% else %}
+        ×
+    {% endif %}
+{% endblock %}
+
+
+
+
 
 {% block content %}
     <ul class="nav">
         <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=1">準備日晴</a></li>
-        <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=2">準備日雨</a></li>
+        {#<li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=2">準備日雨</a></li>#}
+        <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=2">×</a></li>
         <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=3">1日目晴</a></li>
         <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=4">1日目雨</a></li>
         <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=5">2日目晴</a></li>
         <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=6">2日目雨</a></li>
-        <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=7">片付け日</a></li>
+        {#<li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=7">片付け日</a></li>#}
+        <li class="nav__item"><a href="{% url 'whole_shift' %}?shift_id=7">×</a></li>
     </ul>
 
     <br>
