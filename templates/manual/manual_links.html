@@ -4,7 +4,7 @@
 {% block headline %}対応マニュアル{% endblock %}
 
 {% block content %}
-    <h3><a href="{{ manual1 }}">危機管理基本マニュアル</a></h3><br>
-    <h3><a href="{{ manual2 }}">地震・火災時の手続き</a></h3><br>
-    <h3><a href="{{ manual3 }}">不審者対応マニュアル</a></h3><br>
+    {% for name, link in manual_dic.items %}
+        <h3><a href="{{ link }}">{{ name }}</a></h3><br>
+    {% endfor %}
 {% endblock %}
