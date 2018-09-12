@@ -5,9 +5,9 @@ register = template.Library()
 
 
 place_colors_sun = {
-    'メインステージ': ['#FF0000', 'white'],
-    'サブステージ': ['#FF0000', 'white'],
-    'A講義室': ['#FF0000', 'white'],
+    'メインステージ': ['#DF01A5', 'white'],
+    'サブステージ': ['#DF01A5', 'white'],
+    'A講義室': ['#DF01A5', 'white'],
     '体育館': ['#FF9900', 'white'],
     'D講義室': ['#FF9900', 'white'],
     'マルチメディア': ['#FFFF00', '#0B3B39'],
