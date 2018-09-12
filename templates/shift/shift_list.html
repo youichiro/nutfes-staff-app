@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load cell_color %}
 
 {% block title %}
     {% if shift_list %}
@@ -45,11 +46,16 @@
         <div class="shift_slide_wrap">
             {% for tasks in tasks_set %}
                 <div class="shift_slide_box">
-                    <div class="shift_cell name_cell" style="height: 1cm;">
+                    <div class="shift_cell" style="background: {{ tasks.0.department|name_color }};
+                            color: {{ tasks.0.department|name_font_color }}; height: 1cm;">
                         {{ tasks.0.department }}
                     </div>
-                    <div class="shift_cell name_cell" style="height: 1cm;">
-                        <a href="{% url 'personal_shift' tasks.0.id %}">{{ tasks.0.user }}</a>
+                    <div class="shift_cell" style="background: {{ tasks.0.department|name_color }}; height: 1cm;">
+                        <a href="{% url 'personal_shift' tasks.0.id %}"
+                           style="color: {{ tasks.0.department|name_font_color }};
+                           text-decoration: none;">
+                            {{ tasks.0.user }}
+                        </a>
                     </div>
                     {% include 'shift/base_timetable.html' with tasks=tasks.1 %}
                 </div>

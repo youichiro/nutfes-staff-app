@@ -22,6 +22,8 @@ INSTALLED_APPS = [
     'shift',
     'manual',
     'timetable',
+    'shift.templatetags.cell_color',
+    'timetable.templatetags.place_color',
 ]
 
 MIDDLEWARE = [

@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load place_color %}
 
 {% block title %}{{ timetable_list.0.day }}{{ timetable_list.0.weather }}タイムテーブル{% endblock %}
 {% block headline %}{{ timetable_list.0.day }}{{ timetable_list.0.weather }}タイムテーブル{% endblock %}
@@ -29,9 +30,17 @@
                     {% for event, count, flag in events.1 %}
                         {% ifchanged event %}
                             {% if not event %}
-                                <div class="event_cell non_cell" style="height: {{ count }}cm;"></div>
+                                <div class="event_cell" style="background: {{ timetable_list.0.weather|back_color }}; height: {{ count }}cm;"></div>
                             {% else %}
-                                <div class="event_cell{% if flag > 0 %} now_cell{% endif %}" style="height: {{ count }}cm;">
+                                <div class="event_cell{% if flag > 0 %} now_cell{% endif %}"
+                                     style="{% if timetable_list.0.weather == '晴' %}
+                                                background: {{ events.0.place|place_color_sun }};
+                                                color: {{ events.0.place|place_font_color_sun }};
+                                            {% else %}
+                                                background: {{ events.0.place|place_color_rain }};
+                                                color: {{ events.0.place|place_font_color_rain }};
+                                            {% endif %}
+                                            height: {{ count }}cm;">
                                     {{ event }}
                                 </div>
                             {% endif %}

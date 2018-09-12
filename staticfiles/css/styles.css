@@ -104,21 +104,6 @@ body {
     font-weight: bold;
 }
 
-.batu_cell {
-    background: #CCCCCC;
-    font-weight: normal;
-}
-
-.rest_cell {
-    background: lightgreen;
-    color: black;
-    font-weight: normal;
-}
-
-.park_cell {
-    background: hotpink;
-}
-
 #----------whole_shift---------- {}
 
 .slide_wrap {
@@ -150,16 +135,6 @@ body {
     min-width: 4cm;
 }
 
-.name_cell {
-    background: darkorange;
-    color: black;
-}
-
-.name_cell a {
-    text-decoration: none;
-    color: black;
-}
-
 #----------timetable---------- {}
 
 .place_cell {
@@ -176,11 +151,6 @@ body {
     border: white solid 1px;
     color: white;
     font-weight: bold;
-}
-
-.non_cell {
-    background: #CCCCCC;
-    font-weight: normal;
 }
 
 .time_cell_t {

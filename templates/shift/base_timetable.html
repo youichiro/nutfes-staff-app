@@ -1,21 +1,17 @@
+{% load cell_color %}
+
 {% for task, count, flag in tasks %}
     {% ifchanged task %}
         {% if not task %}
-            <div class="shift_cell non_cell" style="height: {{ count }}cm;"></div>
+            <div class="shift_cell" style="background: #C0C0C0; height: {{ count }}cm;"></div>
         {% elif task == '×' %}
-            <div class="shift_cell batu_cell" style="height: {{ count }}cm;">
-                {{ task }}
-            </div>
-        {% elif task == '休憩' %}
-            <div class="shift_cell rest_cell{% if flag > 0 %} now_cell{% endif %}" style="height: {{ count }}cm;">
-                {{ task }}
-            </div>
-        {% elif task == 'フレパ' %}
-            <div class="shift_cell park_cell{% if flag > 0 %} now_cell{% endif %}" style="height: {{ count }}cm;">
+            <div class="shift_cell" style="background: {{ task|task_color }};
+                    color: {{ task|task_font_color }}; height: {{ count }}cm;">
                 {{ task }}
             </div>
         {% else %}
-            <div class="shift_cell{% if flag > 0 %} now_cell{% endif %}" style="height: {{ count }}cm;">
+            <div class="shift_cell{% if flag > 0 %} now_cell{% endif %}" style="background: {{ task|task_color }};
+                    color: {{ task|task_font_color }}; height: {{ count }}cm;">
                 {{ task }}
             </div>
         {% endif %}
