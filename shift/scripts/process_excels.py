@@ -24,7 +24,7 @@ def save(user, department, day, weather, shift_id, row, task):
 
 def register(sheet, end_column, day, weather, shift_id, active=False):
     if not active:
-        return
+       return
     print('Saving: {}{}_shift'.format(day, weather))
 
     # 列と名前の対応表の作成
@@ -95,9 +95,9 @@ def main():
     first_sun_sheet = first_wb['晴 ver.2.0']
     first_rain_sheet = first_wb['雨 ver.2.0']
     second_sun_sheet = second_wb['晴 ver.2.0']
-    second_rain_sheet = second_wb['雨']
+    second_rain_sheet = second_wb['雨 ver.2.0']
     # preparation_sun_sheet = preparation_wb[preparation_wb.sheetnames[0]]
-    preparation_sun_sheet = preparation_wb['準備日 晴']
+    preparation_sun_sheet = preparation_wb['準備日 晴 当日変更']
     # preparation_rain_sheet = preparation_wb[preparation_wb.sheetnames[1]]
     # cleanup_sheet = cleanup_wb[cleanup_wb.sheetnames[0]]
 
