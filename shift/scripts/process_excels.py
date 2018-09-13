@@ -83,13 +83,13 @@ def main():
     first_shift_file = os.path.join(current_dir, 'scripts/first_shift.xlsx')
     second_shift_file = os.path.join(current_dir, 'scripts/second_shift.xlsx')
     preparation_shift_file = os.path.join(current_dir, 'scripts/preparation_shift.xlsx')
-    cleanup_shift_file = os.path.join(current_dir, 'scripts/cleanup_shift.xlsx')
+    # cleanup_shift_file = os.path.join(current_dir, 'scripts/cleanup_shift.xlsx')
 
     # Workbooks
     first_wb = openpyxl.load_workbook(first_shift_file)
     second_wb = openpyxl.load_workbook(second_shift_file)
     preparation_wb = openpyxl.load_workbook(preparation_shift_file)
-    cleanup_wb = openpyxl.load_workbook(cleanup_shift_file)
+    # cleanup_wb = openpyxl.load_workbook(cleanup_shift_file)
 
     # Worksheets
     first_sun_sheet = first_wb['晴 ver.2.0']
@@ -98,19 +98,19 @@ def main():
     second_rain_sheet = second_wb['雨']
     # preparation_sun_sheet = preparation_wb[preparation_wb.sheetnames[0]]
     preparation_sun_sheet = preparation_wb['準備日 晴']
-    preparation_rain_sheet = preparation_wb[preparation_wb.sheetnames[1]]
-    cleanup_sheet = cleanup_wb[cleanup_wb.sheetnames[0]]
+    # preparation_rain_sheet = preparation_wb[preparation_wb.sheetnames[1]]
+    # cleanup_sheet = cleanup_wb[cleanup_wb.sheetnames[0]]
 
     # Delete all
     Shift.objects.all().delete()
 
     # Registration
     register(preparation_sun_sheet, end_column='DJ', day='準備日', weather='晴', shift_id=1, active=True)
-    register(preparation_rain_sheet, end_column='DJ', day='準備日', weather='雨', shift_id=2, active=False)
+    # register(preparation_rain_sheet, end_column='DJ', day='準備日', weather='雨', shift_id=2, active=False)
     register(first_sun_sheet, end_column='DR', day='1日目', weather='晴', shift_id=3, active=True)
     register(first_rain_sheet, end_column='DS', day='1日目', weather='雨', shift_id=4, active=True)
     register(second_sun_sheet, end_column='DH', day='2日目', weather='晴', shift_id=5, active=True)
     register(second_rain_sheet, end_column='DH', day='2日目', weather='雨', shift_id=6, active=True)
-    register(cleanup_sheet, end_column='EQ', day='片付け日', weather='', shift_id=7, active=False)
+    # register(cleanup_sheet, end_column='EQ', day='片付け日', weather='', shift_id=7, active=False)
 
     print('Success saving all.')
