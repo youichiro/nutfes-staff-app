@@ -11,9 +11,9 @@ def get_default_shift_id():
     if date == datetime.date(2018, 9, 14):
         return 1
     elif date == datetime.date(2018, 9, 15):
-        return 4
+        return 3
     elif date == datetime.date(2018, 9, 16):
-        return 6
+        return 5
     elif date == datetime.date(2018, 9, 17):
         return 7
     else:

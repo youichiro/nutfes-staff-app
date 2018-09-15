@@ -8,9 +8,9 @@ def get_default_shift_id():
     now = datetime.datetime.now()
     date = now.date()
     if date == datetime.date(2018, 9, 15):
-        return 2
+        return 1
     elif date == datetime.date(2018, 9, 16):
-        return 4
+        return 3
     else:
         return 1
 
