@@ -109,8 +109,8 @@ def main():
     # register(preparation_rain_sheet, end_column='DJ', day='準備日', weather='雨', shift_id=2, active=False)
     register(first_sun_sheet, end_column='DR', day='1日目', weather='晴', shift_id=3, active=True)
     register(first_rain_sheet, end_column='DS', day='1日目', weather='雨', shift_id=4, active=True)
-    register(second_sun_sheet, end_column='DH', day='2日目', weather='晴', shift_id=5, active=True)
-    register(second_rain_sheet, end_column='DH', day='2日目', weather='雨', shift_id=6, active=True)
+    register(second_sun_sheet, end_column='DE', day='2日目', weather='晴', shift_id=5, active=True)
+    register(second_rain_sheet, end_column='DE', day='2日目', weather='雨', shift_id=6, active=True)
     # register(cleanup_sheet, end_column='EQ', day='片付け日', weather='', shift_id=7, active=False)
 
     print('Success saving all.')
